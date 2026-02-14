@@ -36,7 +36,9 @@ def move_file_adding_timestmap(src: Path | str, dest: Path | str = "") -> Path:
             )
 
         # Build partition folder structure
-        partition = Path(file_name_splitted[0]) / file_name_splitted[4] / file_name_splitted[3]
+        partition = (
+            Path(file_name_splitted[0]) / file_name_splitted[4] / file_name_splitted[3]
+        )
 
         # Final folder with partition
         dest = dest / partition
@@ -50,10 +52,9 @@ def move_file_adding_timestmap(src: Path | str, dest: Path | str = "") -> Path:
         # New file name
         new_name = f"{file_name}_{timestamp}{ext}"
 
-
         dest = dest / new_name
 
-        # Move file to final route. dest is returned 
+        # Move file to final route. dest is returned
         return shutil.copy2(src, dest)
 
     except FileNotFoundError as e:
