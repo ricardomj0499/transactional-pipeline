@@ -58,13 +58,13 @@ def move_file_adding_timestmap(src: Path | str, dest: Path | str = "") -> Path:
         return shutil.copy2(src, dest)
 
     except FileNotFoundError as e:
-        raise MoveFileError(f"Archivo no encontrado: {e}") from e
+        raise MoveFileError(f"File not found: {e}") from e
 
     except PermissionError as e:
-        raise MoveFileError(f"Permiso denegado: {e}") from e
+        raise MoveFileError(f"Denied permissions: {e}") from e
 
     except OSError as e:
-        raise MoveFileError(f"Error del sistema operativo: {e}") from e
+        raise MoveFileError(f"OS error: {e}") from e
 
     except Exception as e:
-        raise MoveFileError(f"Error inesperado: {e}") from e
+        raise MoveFileError(f"Error when processing file: {e}") from e
